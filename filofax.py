@@ -35,6 +35,14 @@ def daysOfMonth(year, month):
             days.remove(day)
     return days
 
+# Genererar en lista med månadens datum.
+def datesOfMonth(year, month):
+    dates = []
+    for day in daysOfMonth(year, month):
+        date = strptime(str(year) + '-' + str(month) + '-' + str(day), '%Y-%m-%d')
+        dates.append(date)
+    return dates
+
 # -------- Funktioner för gränssnitt --------
 
 # Skriver ut valmenyn.
@@ -48,6 +56,7 @@ def printMenu():
     print('(A)dd page')
     print('(R)emove page')
     print('(S)how pages')
+    print('Show (m)onth')
     print('(F)lip to page')
     print('(C)heck date')
     print('(Q)uit')
@@ -162,6 +171,14 @@ def showPage(filofax, date):
 def todaysDate():
     return localtime()
 
+# Skriver ut en anteckningar för en hel månad, givet en månad och ett år.
+def showMonth(filofax):
+    year = input('Choose year: ')
+    month = input('Choose month: ')
+    dates = datesOfMonth(year, month)
+    for date in dates:
+        showPage(filofax, date)
+
 # -------- Huvudprogram --------
 
 def mainProgram():
@@ -189,6 +206,8 @@ def mainProgram():
             removePage(filofax)
         if choice == 'S':
             showPages(filofax)
+        if choice == 'M':
+            showMonth(filofax)
         if choice == 'F':
             date = chooseDate()
             filofax.setDate(date)
