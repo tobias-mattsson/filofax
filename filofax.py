@@ -24,6 +24,17 @@ def str2date(date_str):
 def date2str(date):
     return strftime('%Y-%m-%d', date)
 
+# Genererar en lista med månadens dagar.
+def daysOfMonth(year, month):
+    days = []
+    for day in range(0, 32):
+        days.append(day)
+        try:
+            strptime(str(year) + '-' + str(month) + '-' + str(day), '%Y-%m-%d')
+        except ValueError:
+            days.remove(day)
+    return days
+
 # -------- Funktioner för gränssnitt --------
 
 # Skriver ut valmenyn.
