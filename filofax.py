@@ -173,9 +173,20 @@ def todaysDate():
 
 # Skriver ut en anteckningar för en hel månad, givet en månad och ett år.
 def showMonth(filofax):
-    year = input('Choose year: ')
-    month = input('Choose month: ')
+    year = filofax.current_date[0]
+    picked = False
+    while picked == False:
+        month = input('Choose month: ')
+        try:
+            if int(month) >= 1 and int(month) <= 12:
+                picked = True
+            else:
+                print('Not a valid month, try again!')
+        except:
+            print('Not a valid month, try again!')
     dates = datesOfMonth(year, month)
+    for date in dates:
+        print(date)
     for date in dates:
         showPage(filofax, date)
 
