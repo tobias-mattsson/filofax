@@ -188,9 +188,8 @@ def showMonth(filofax):
             print('Not a valid month, try again!')
     dates = datesOfMonth(year, month)
     for date in dates:
-        print(date)
-    for date in dates:
-        showPage(filofax, date)
+        if filofax.numNotes(date) > 0:
+            showPage(filofax, date)
 
 # -------- Huvudprogram --------
 
