@@ -153,11 +153,13 @@ def removeNote(filofax):
 # Visar alla sidors aktivitet(er).
 def showPages(filofax):
     print("Overview of all sheets:")
-    for page in filofax.pages:
-        print(date2str(page.date) + ': ')
-        for text in page.note:
-            print(text, end = '')
-            print()
+    pages = sorted(filofax.pages, key = lambda page: page.date)
+    for page in pages:
+        if filofax.numNotes(page.date) > 0:
+            print(date2str(page.date) + ': ')
+            for text in page.note:
+                print(text, end = '')
+                print()
 
 # Visar dagens aktivitet.
 def showPage(filofax, date):

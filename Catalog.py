@@ -37,7 +37,7 @@ class Catalog:
     # Format: <date>/<note>(/<note>/<note>...)\n
     def save(self, filename):
         file = open(filename, 'w')
-        for page in self.pages:
+        for page in sorted(self.pages, key = lambda page: page.date):
             file.write(strftime('%Y-%m-%d', page.date) + '/' + '/'.join(page.note) + '\n')
         file.close()
 
