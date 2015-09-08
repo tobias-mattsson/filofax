@@ -55,9 +55,9 @@ def printMenu():
     print('R(e)move a note')
     print('(A)dd page')
     print('(R)emove page')
-    print('(S)how pages')
+    print('(S)how all pages')
     print('Show (m)onth')
-    print('(F)lip to page')
+    print('(J)ump to date')
     print('(C)heck date')
     print('(Q)uit')
 
@@ -219,7 +219,7 @@ def mainProgram():
             showPages(filofax)
         if choice == 'M':
             showMonth(filofax)
-        if choice == 'F':
+        if choice == 'J':
             date = chooseDate()
             filofax.setDate(date)
         if choice == 'C':
