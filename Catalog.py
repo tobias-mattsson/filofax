@@ -90,8 +90,14 @@ class Catalog:
     # Ändrar aktuellt datum i katalogen.
     def changeDate(self, change):
         year = self.current_date[0]
-        day = self.current_date[7]
-        new_date = strptime(str(year) + '-' + str(day + change), '%Y-%j')
+        day = self.current_date[7] + change
+        # Förhindrar bläddring mellan olika år.
+        if day == 0:
+            day = 1
+        elif day == 366:
+            day =365
+        new_date = strptime(str(year) + '-' + str(day), '%Y-%j')
+        strptime(strftime('%Y-%m-%d', new_date), '%Y-%m-%d')
         self.current_date = new_date
 
     # Sätter aktuellt datum i katalogen.

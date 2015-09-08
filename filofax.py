@@ -1,7 +1,5 @@
 # BUGGFIX
 #
-# månadsvy
-#
 # bläddra över årsgränser antingen genom exception handling eller förfinad bläddringsfunktion
 
 # Titel: Filofax
